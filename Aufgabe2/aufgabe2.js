@@ -12,13 +12,13 @@ var Memory;
     var numPlayerInt;
     document.addEventListener('DOMContentLoaded', main);
     function main() {
-        Player();
+        player();
         creatCardList(numPairsInt);
         enterName(numPlayerInt);
         creatCards(numPairsInt);
     }
     //Spieleranzahl
-    function Player() {
+    function player() {
         var numPlayer = prompt("Gewünschte Anzahl der Spieler   min. 1 | max. 4", "");
         numPlayerInt = parseInt(numPlayer);
         if (numPlayerInt >= 1 && numPlayerInt <= 4) {
@@ -26,11 +26,11 @@ var Memory;
         }
         else {
             alert("Deine Zahl liegt nicht zwischen 1 und 4");
-            Player();
+            player();
         }
     }
     //Kartenpaare
-    function Pair() {
+    function pair() {
         var numPairs = prompt("Gewünschte Anzahl der Kartenpaare   min. 1 | max. 26");
         numPairsInt = parseInt(numPairs);
         if (numPairsInt >= 1 && numPairsInt <= 26) {
@@ -38,10 +38,10 @@ var Memory;
         }
         else {
             alert("Deine Zahl liegt nicht zwischen 1 und 26");
-            Pair();
+            pair();
         }
     }
-    let amount = Pair();
+    let amount = pair();
     //Spielernamen erstellen
     function enterName(_numPlayer) {
         let node = document.getElementById("spielernamen");
@@ -80,6 +80,7 @@ var Memory;
             childNodeHTML += "</h3>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
+            var remove = cardPush.splice(random, 1);
         }
     }
     //Status der Karten

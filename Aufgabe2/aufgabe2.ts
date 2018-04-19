@@ -15,7 +15,7 @@ namespace Memory {
     document.addEventListener('DOMContentLoaded', main);
 
     function main(): void {
-        Player();
+        player();
         creatCardList(numPairsInt);
         enterName(numPlayerInt);
         creatCards(numPairsInt);
@@ -23,7 +23,7 @@ namespace Memory {
 
 
     //Spieleranzahl
-    function Player(): number {
+    function player(): number {
         var numPlayer: string = prompt("Gewünschte Anzahl der Spieler   min. 1 | max. 4", "");
         numPlayerInt = parseInt(numPlayer);
 
@@ -32,14 +32,13 @@ namespace Memory {
         }
         else {
             alert("Deine Zahl liegt nicht zwischen 1 und 4");
-            Player();
+            player();
         }
     }
 
 
-
     //Kartenpaare
-    function Pair(): number {
+    function pair(): number {
         var numPairs: string = prompt("Gewünschte Anzahl der Kartenpaare   min. 1 | max. 26");
         numPairsInt = parseInt(numPairs);
 
@@ -48,12 +47,11 @@ namespace Memory {
         }
         else {
             alert("Deine Zahl liegt nicht zwischen 1 und 26");
-            Pair();
+            pair();
         }
 
     }
-    let amount: number = Pair();
-
+    let amount: number = pair();
 
 
     //Spielernamen erstellen
@@ -74,7 +72,6 @@ namespace Memory {
     }
 
 
-
     //Inhalt erstellen
     function creatCardList(x: number): void {
         for (let i: number = 1; i <= x; i++) {
@@ -86,8 +83,7 @@ namespace Memory {
         }
     }
 
-
-    
+   
     //Karten erstellen
     function creatCards(_numPairs: number): void {
         let node: any = document.getElementById("spielfeld");
@@ -106,11 +102,14 @@ namespace Memory {
             childNodeHTML += "</h3>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
+            
+            var remove = cardPush.splice(random, 1);
+            
+            
 
         }
     }
-
-    
+   
 
     //Status der Karten
     function randomStatus(): string {
