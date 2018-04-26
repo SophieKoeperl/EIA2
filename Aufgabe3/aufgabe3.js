@@ -106,32 +106,39 @@ var Memory;
                 }
             }
         }
-        if (numCardsOpen == 1 || numCardsOpen == 2) {
+        if (numCardsOpen == 2) {
             setTimeout(compareCard, 2000);
         }
-        function compareCard() {
-            let card0 = document.getElementsByClassName("open")[0];
-            let card1 = document.getElementsByClassName("open")[1];
-            cardOpen.push(card0, card1);
-            if (cardOpen[0].innerHTML == cardOpen[1].innerHTML) {
-                target.classList.remove("open");
-                target.classList.add("taken");
-                numCardsFound++;
-                console.log("Pärchen gefunden");
-            }
-            else {
-                target.classList.remove("open");
-                target.classList.add("hidden");
-                console.log("leider nicht passend");
-            }
-            cardOpen.splice(0, 2);
-            numCardsOpen = 0;
+        if (numCardsOpen > 2) {
+            target.classList.remove("open");
+            target.classList.add("hidden");
         }
     }
-    function finish(numCardsFound) {
-        if (numCardsFound == cardPush.length) {
-            prompt("Glückwunsch: alle Pärchen gefunden!");
+    //Karten vergleichen
+    function compareCard() {
+        let card0 = document.getElementsByClassName("open")[0];
+        let card1 = document.getElementsByClassName("open")[1];
+        cardOpen.push(card0, card1);
+        if (cardOpen[0].innerHTML == cardOpen[1].innerHTML) {
+            card0.classList.remove("open");
+            card0.classList.add("taken");
+            card1.classList.remove("open");
+            card1.classList.add("taken");
+            numCardsFound++;
+            console.log("Pärchen gefunden");
+            if (numCardsFound == numPairsInt) {
+                alert("Glückwunsch: Alle Pärchen gefunden!");
+            }
         }
+        else {
+            card0.classList.remove("open");
+            card0.classList.add("hidden");
+            card1.classList.remove("open");
+            card1.classList.add("hidden");
+            console.log("leider nicht passend");
+        }
+        cardOpen.splice(0, 2);
+        numCardsOpen = 0;
     }
 })(Memory || (Memory = {}));
 //# sourceMappingURL=aufgabe3.js.map
