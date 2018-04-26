@@ -13,7 +13,7 @@ namespace Memory {
     var numPairsInt: number;
     var numPlayerInt: number;
     var numCardsOpen: number = 0;
-    var numCardsFound: number;
+    var numCardsFound: number =0;
 
     document.addEventListener('DOMContentLoaded', main);
 
@@ -42,8 +42,8 @@ namespace Memory {
 
     //Kartenpaare
     function pair(): number {
-        var numPairs: string = prompt("Gewünschte Anzahl der Kartenpaare   min. 1 | max. 26");
-        numPairsInt = parseInt(numPairs);
+        var numPairsEnter: string = prompt("Gewünschte Anzahl der Kartenpaare   min. 1 | max. 26");
+        numPairsInt = parseInt(numPairsEnter);
 
         if (numPairsInt >= 1 && numPairsInt <= 26) {
             return numPairsInt;
@@ -52,7 +52,6 @@ namespace Memory {
             alert("Deine Zahl liegt nicht zwischen 1 und 26");
             pair();
         }
-
     }
     let amount: number = pair();
 
@@ -107,10 +106,10 @@ namespace Memory {
             node.innerHTML += childNodeHTML;
 
             var remove = cardPush.splice(random, 1);
-            var status = document.getElementsByClassName("hidden");
+            var hiddenCards = document.getElementsByClassName("hidden");
 
-            for (let i: number = 0; i < status.length; i++) {
-                status[i].addEventListener("click", cardStatus);
+            for (let i: number = 0; i < hiddenCards.length; i++) {
+                hiddenCards[i].addEventListener("click", cardStatus);
 
             }
         }
@@ -119,17 +118,12 @@ namespace Memory {
 
     //Karten klick
     function cardStatus(_event: MouseEvent): void {
-        console.log("Test");
         let target: HTMLElement = <HTMLElement>_event.currentTarget;
         if (numCardsOpen >= 0 && numCardsOpen < 2) {
-            if (target.className = "hidden") {
-                if (numCardsOpen < 2)
-                    numCardsOpen++;
-        if (target.className = "hidden") {
-            target.classList.remove("hidden");
-            target.classList.add("open");
-            console.log(target.classList);
-            }
+            if (target.className == "hidden") {
+                target.classList.remove("hidden");
+                target.classList.add("open");
+                numCardsOpen++;
             }
         }
 
@@ -156,11 +150,9 @@ namespace Memory {
             card1.classList.add("taken");
             numCardsFound++;
             console.log("Pärchen gefunden");
-            
-            if (numCardsFound == numPairsInt){
-                alert("Glückwunsch: Alle Pärchen gefunden!");
-                }
-            
+
+            finish();
+
         } else {
             card0.classList.remove("open");
             card0.classList.add("hidden");
@@ -170,6 +162,16 @@ namespace Memory {
         }
         cardOpen.splice(0, 2);
         numCardsOpen = 0;
+        
+        console.log(numCardsFound, numPairsInt);
+    }
+
+
+    //Spiel zuende - Glückwunsch
+    function finish(): void {
+        if (numCardsFound == numPairsInt) {
+            prompt("Glückwunsch: Alle Pärchen gefunden!");
+        }
     }
 
 
