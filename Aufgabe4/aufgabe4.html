@@ -1,0 +1,52 @@
+<!DOCTYPEhtml>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Memory</title>
+<link rel="stylesheet" type="text/css" href="aufgabe4.css">
+<script src="aufgabe4.js"></script>
+<script src="interface_aufgabe4.js"></script>
+</head>
+
+<header  id="input">
+
+	<fieldset>
+		<legend>Kartendeck</legend>
+		<select name="CardDeck" id="select">
+			<option value="Animals" selected="">Tiere</option>
+			<option value="Cities">Städte</option>
+			<option value="Letters">Buchstaben</option>
+		</select> 
+		
+		<input type="number" name="Kartenpaare" placeholder="Anzahl der Kartenpaare" min="1"/>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Spieler</legend>
+		<button id="addplayer">Spieler hinzufügen</button>
+		<button id="removeplayer">Spieler entfernen</button>
+		
+		<div id="name">
+			<input type="text" placeholder="Spielername" name="player"
+				maxlength="20" />
+		</div>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Start</legend>
+		<button type="button" id="start">Start</button>
+	</fieldset>
+
+</header>
+
+
+<body>
+
+	<section id="spielfeld">
+		<fieldset>
+			<legend> Spielfeld </legend>
+		</fieldset>
+	</section>
+
+</body>
+</html>
