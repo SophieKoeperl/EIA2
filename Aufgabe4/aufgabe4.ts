@@ -1,9 +1,7 @@
-/* Aufgabe: 4 - Memory-Menü Name: Sophie Köperl Matrikel:257762 Datum: 06.05.2018 
+/* Aufgabe: 4 - Memory-Menü Name: Sophie Köperl Matrikel:257762 Datum: 16.05.2018 
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. */
 
-/*Leider finde ich den Fehler nicht, um die init-Funktion ausführen zu lassen. 
-Ich weiß nicht, wie ich anders weiter machen kann!*/
 
 namespace Memory {
 
