@@ -1,41 +1,41 @@
-namespace Memory{
-
-    export interface CardDeck {
-        name: string;
-        content: string[];
-        color: string;
-        font: string;
-        size: number;
-    }
+namespace Memory {
 
     export interface Deck {
-        [deckname: string]: CardDeck;
+        cardContent: string[];
+        cssClass: string;
     }
 
-    export let deck: Deck = {};
-    deck["Letters"] = {
-        name: "Letters",
-        content: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
-        color: "hsba(0.5,1.0,0.0,1.0)",
-        font: "Arial",
-        size: 50,
+    export interface Decks {
+        [deckname: string]: Deck;
     }
 
-    deck["Animals"] = {
-        name: "Animals",
-        content: ["Krokdil", "Pferd", "Guerteltier", "Zebra", "Schnecke", "Frosch", "Forelle", "Tiger", "Maus"],
-        color: "hsba(0.5,1.0,0.0,1.0)",
-        font: "Helvetica",
-        size: 30,
+    export let decks: Decks = {}
+
+    decks["Letters"] = {
+        cardContent: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
+        cssClass: "letter"
+    };
+
+    decks["Animals"] = {
+        cardContent: ["Krokdil", "Pferd", "Guerteltier", "Zebra", "Schnecke", "Frosch", "Forelle", "Tiger", "Maus"],
+        cssClass: "animals"
+    };
+
+    decks["Cities"] = {
+        cardContent: ["Berlin", "Hamburg", "New York", "Tokyo", "Oslo", "Rom", "Paris", "Wien", "Moskau", "Amsterdam", "Seoul"],
+        cssClass: "cities"
+    };
+
+
+    export interface Player {
+        name: string;
+        points: number;
     }
 
-    deck["Cities"] = {
-        name: "Cities",
-        content: ["Berlin", "Hamburg", "New York", "Tokyo", "Oslo", "Rom", "Paris", "Wien", "Moskau", "Amsterdam", "Seoul"],
-        color: "hsba(0.5,1.0,0.0,1.0)",
-        font: "Arial",
-        size: 40,
+    export interface Players {
+        [players: string]: Player;
     }
 
+    export let players: Players = {}
 }
 

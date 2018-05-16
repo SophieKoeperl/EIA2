@@ -1,150 +1,139 @@
-/* Aufgabe: 4 - Memory-Menü Name: Sophie Köperl Matrikel:257762 Datum: 05.05.2018
+/* Aufgabe: 4 - Memory-Menü Name: Sophie Köperl Matrikel:257762 Datum: 06.05.2018
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. */
+/*Leider finde ich den Fehler nicht, um die init-Funktion ausführen zu lassen.
+Ich weiß nicht, wie ich anders weiter machen kann!*/
 var Memory;
 (function (Memory) {
-    let numPlayers;
-    let numPairs;
-    let cardContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    let cardPush = [];
+    let cardContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+    let newArray = [];
     let cardOpen = [];
-    var classList = ["hidden", "taken", "open"];
-    var numPairsInt;
-    var numPlayerInt;
-    var numCardsOpen = 0;
-    var numCardsFound = 0;
-    document.addEventListener('DOMContentLoaded', main);
+    let numPairs;
+    let numPlayer;
+    let numCardsOpen = 0;
+    let openArray = [];
+    let cardsTaken = [];
+    let x = 0;
+    let inputs = document.getElementsByTagName("input");
+    document.addEventListener('DOMContentLoaded', init);
+    function init() {
+        let startButton = document.getElementById("startButton");
+        startButton.addEventListener("click", main);
+    }
+    //Mainfunktion Memory  
     function main() {
-        //player();
-        creatCardList(numPairsInt);
-        //enterName(numPlayerInt);
-        createCards(numPairsInt);
-    }
-    //Spieleranzahl
-    /*function player(): number {
-        var numPlayer: string = prompt("Gewünschte Anzahl der Spieler   min. 1 | max. 4", "");
-        numPlayerInt = parseInt(numPlayer);
-
-        if (numPlayerInt >= 1 && numPlayerInt <= 4) {
-            return numPlayerInt;
+        let header = document.getElementsByTagName("header");
+        header[0].classList.add("hiddenHeader");
+        let players = parseInt(inputs[0].value);
+        let amountCards = parseInt(inputs[5].value);
+        if (players <= 4 && players > 0 && amountCards > 0 && amountCards <= 10) {
+            //player();
+            createCardList();
+            createPlayers();
+            createCards();
         }
         else {
-            alert("Deine Zahl liegt nicht zwischen 1 und 4");
-            player();
-        }
-    }*/
-    //Kartenpaare
-    /*function pair(): number {
-        var numPairsEnter: string = prompt("Gewünschte Anzahl der Kartenpaare   min. 1 | max. 26");
-        numPairsInt = parseInt(numPairsEnter);
-
-        if (numPairsInt >= 1 && numPairsInt <= 26) {
-            return numPairsInt;
-        }
-        else {
-            alert("Deine Zahl liegt nicht zwischen 1 und 26");
-            pair();
+            alert("Undefined!");
+            location.reload(true);
         }
     }
-    let amount: number = pair();
-
-
-    //Spielernamen erstellen
-    function enterName(_numPlayer: number): void {
-        let node: any = document.getElementById("spielernamen");
-        let childNodeHTML: string;
-
-        for (let i: number = 0; i < _numPlayer; i++) {
-
-            childNodeHTML = "<form class='namen'>";
-            childNodeHTML += "<label for='vname'=Name:>";
-            childNodeHTML += "<input type='text' id='vname' name='vname'>";
-            childNodeHTML += "<button class='button' type='button'>Enter</button>";
-            childNodeHTML += "</label>";
-            childNodeHTML += "</form>";
+    //Spielernamen erzeugen
+    function createPlayers() {
+        let players = parseInt(inputs[0].value);
+        let node = document.getElementById("playersnames");
+        let childNodeHTML;
+        for (let i = 0; i < players; i++) {
+            let playerName = inputs[i + 1].value;
+            childNodeHTML = "<div>";
+            childNodeHTML += "<p class='namen'>";
+            childNodeHTML += playerName;
+            childNodeHTML += "</p>";
+            childNodeHTML += "<p  id='Punktestand" + i + "'>";
+            childNodeHTML += "0";
+            childNodeHTML += "</p>";
+            childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
         }
     }
-    */
-    //Inhalt erstellen
-    function creatCardList(x) {
-        for (let i = 1; i <= x; i++) {
-            var content = cardContent[0];
-            cardPush.push(content);
-            cardPush.push(content);
-            var remove = cardContent.splice(0, 1);
+    //Karteninhalt erstellen   
+    function createCardList() {
+        let amountCards = parseInt(inputs[5].value);
+        let select = document.getElementById("cardContent");
+        let chosenCardContent = select.value;
+        for (let i = 1; i <= amountCards; i++) {
+            let content = Memory.decks[chosenCardContent].cardContent[i - 1];
+            newArray.push(content);
+            newArray.push(content);
+            cardContent.splice(0, 1);
+            console.log(newArray);
         }
     }
-    //Karten erstellen
-    function createCards(_numPairs) {
+    //Karten erstellen   
+    function createCards() {
+        let amountCards = parseInt(inputs[5].value);
         let node = document.getElementById("spielfeld");
         let childNodeHTML;
-        let i = 0;
-        for (let i = 0; i < _numPairs * 2; i++) {
-            let min = 0;
-            let max = (cardPush.length * 2);
-            var random = Math.floor(Math.random() * cardPush.length);
-            childNodeHTML = "<div  class='hidden" + "' id='Karte" + i + "'>";
+        for (let i = 0; i < amountCards * 2; i++) {
+            var random = Math.floor(Math.random() * Math.floor(newArray.length));
+            childNodeHTML = "<div  class='card" + "hidden" + "' id='Karte" + i + "'>";
             childNodeHTML += "<h3>";
-            childNodeHTML += cardPush[random];
+            childNodeHTML += newArray[random];
             childNodeHTML += "</h3>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
-            var remove = cardPush.splice(random, 1);
-            var hiddenCards = document.getElementsByClassName("hidden");
-            for (let i = 0; i < hiddenCards.length; i++) {
-                hiddenCards[i].addEventListener("click", cardStatus);
+            newArray.splice(random, 1);
+            var status = document.getElementsByClassName("cardhidden");
+            for (let i = 0; i < status.length; i++) {
+                status[i].addEventListener("click", changeStatus);
             }
         }
     }
-    //Karten klick
-    function cardStatus(_event) {
+    // Karten aufdecken
+    function changeStatus(_event) {
         let target = _event.currentTarget;
-        if (numCardsOpen >= 0 && numCardsOpen < 2) {
-            if (target.className == "hidden") {
-                target.classList.remove("hidden");
-                target.classList.add("open");
-                numCardsOpen++;
+        if (target.classList.contains("cardhidden")) {
+            target.classList.remove("cardhidden");
+            target.classList.add("cardopen");
+            numCardsOpen++;
+            if (numCardsOpen == 2) {
+                setTimeout(compareCards, 1500);
+            }
+            if (numCardsOpen > 2) {
+                target.classList.remove("cardopen");
+                target.classList.add("cardhidden");
             }
         }
-        if (numCardsOpen == 2) {
-            setTimeout(compareCard, 2000);
-        }
-        if (numCardsOpen > 2) {
-            target.classList.remove("open");
-            target.classList.add("hidden");
-        }
     }
-    //Karten vergleichen
-    function compareCard() {
-        let card0 = document.getElementsByClassName("open")[0];
-        let card1 = document.getElementsByClassName("open")[1];
-        cardOpen.push(card0, card1);
-        if (cardOpen[0].innerHTML == cardOpen[1].innerHTML) {
-            card0.classList.remove("open");
-            card0.classList.add("taken");
-            card1.classList.remove("open");
-            card1.classList.add("taken");
-            numCardsFound++;
-            console.log("Pärchen gefunden");
-            finish();
+    // Karten vergleichen
+    function compareCards() {
+        let amountCards = parseInt(inputs[5].value);
+        let karte1 = document.getElementsByClassName("cardopen")[0];
+        let karte2 = document.getElementsByClassName("cardopen")[1];
+        openArray.push(karte1, karte2);
+        console.log(openArray);
+        if (openArray[0].innerHTML == openArray[1].innerHTML) {
+            openArray[0].classList.remove("cardopen");
+            openArray[1].classList.remove("cardopen");
+            openArray[0].classList.add("cardtaken");
+            openArray[1].classList.add("cardtaken");
+            console.log("Kartenpaar abeglegt");
+            x++;
+            let playerScore = x.toString();
+            document.getElementById('Punktestand0').innerHTML = playerScore;
+            // Gratulation
+            if (x == amountCards) {
+                alert("Congratulations!");
+                location.reload(true);
+            }
         }
         else {
-            card0.classList.remove("open");
-            card0.classList.add("hidden");
-            card1.classList.remove("open");
-            card1.classList.add("hidden");
-            console.log("leider nicht passend");
+            openArray[0].classList.remove("cardopen");
+            openArray[1].classList.remove("cardopen");
+            openArray[0].classList.add("cardhidden");
+            openArray[1].classList.add("cardhidden");
         }
-        cardOpen.splice(0, 2);
         numCardsOpen = 0;
-        console.log(numCardsFound, numPairsInt);
-    }
-    //Spiel zuende - Glückwunsch
-    function finish() {
-        if (numCardsFound == numPairsInt) {
-            prompt("Glückwunsch: Alle Pärchen gefunden!");
-        }
+        openArray.splice(0, 2);
     }
 })(Memory || (Memory = {}));
 //# sourceMappingURL=aufgabe4.js.map

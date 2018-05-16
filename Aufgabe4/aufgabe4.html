@@ -1,52 +1,61 @@
-<!DOCTYPEhtml>
+<!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
+
 <title>Memory</title>
+<meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="aufgabe4.css">
-<script src="aufgabe4.js"></script>
-<script src="interface_aufgabe4.js"></script>
+<script type="text/javascript" src="aufgabe4.js"></script>
+<script type="text/javascript" src="interface_aufgabe4.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
 </head>
 
-<header  id="input">
+<body>
+<h1>Memory</h1>
+<header>
 
-	<fieldset>
-		<legend>Kartendeck</legend>
-		<select name="CardDeck" id="select">
-			<option value="Animals" selected="">Tiere</option>
-			<option value="Cities">Städte</option>
-			<option value="Letters">Buchstaben</option>
-		</select> 
+	<fieldset id="anzahlSpieler">
+		<legend>Spieleranzahl</legend>
+			<input id="plqyers" type="number" name="Spieler"
+			placeholder="1 - 4 Spieler" min="1" max="4" />
+		</fieldset>	
 		
-		<input type="number" name="Kartenpaare" placeholder="Anzahl der Kartenpaare" min="1"/>
-	</fieldset>
-	
-	<fieldset>
-		<legend>Spieler</legend>
-		<button id="addplayer">Spieler hinzufügen</button>
-		<button id="removeplayer">Spieler entfernen</button>
+		<fieldset id="spielername">
+			<legend>Spielername</legend>
+			<input type="text" name="name" placeholder="Player 1"/>
+			<input type="text" name="name" placeholder="Player 2"/>
+			<input type="text" name="name" placeholder="Player 3"/>
+			<input type="text" name="name" placeholder="Player 4"/>
+		</fieldset>
 		
-		<div id="name">
-			<input type="text" placeholder="Spielername" name="player"
-				maxlength="20" />
-		</div>
-	</fieldset>
-	
-	<fieldset>
-		<legend>Start</legend>
-		<button type="button" id="start">Start</button>
-	</fieldset>
+		<fieldset id="Kartendecks">
+			<legend>Kartendeck</legend>
+			<select name="Select" id="cardContent">
+				<option value="Letters"selected>Letters</option>
+				<option value="Animals">Animals</option>
+				<option value="Cities">Cities</option>
+			</select>
+		</fieldset>
+			
+			
+		<fieldset id="anzahlKartenpaare">
+			<legend>Pärchenzahl</legend>
+			<input type="number" name="Kartenpaare" placeholder="1 - 10 Kartenpaare" min="1" max="10" />
+		</fieldset>			
+		<fieldset id="startGame">
+			<button type="button" id="startButton">Start</button>
+		</fieldset>
 
 </header>
 
 
-<body>
 
-	<section id="spielfeld">
-		<fieldset>
-			<legend> Spielfeld </legend>
-		</fieldset>
-	</section>
-
+	<section id="spielfeld"></section>
 </body>
+
+<footer>
+	<section id="playersnames"></section>
+</footer>
+
 </html>

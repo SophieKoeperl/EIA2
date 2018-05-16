@@ -7,243 +7,202 @@ Ich weiß nicht, wie ich anders weiter machen kann!*/
 
 namespace Memory {
 
-    let numPlayers: number = 1;
-    let numPairs: number;
-    let cardContent: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    let cardPush: string[] = [];
-    let cardOpen: any = [];
-    var classList = ["hidden", "taken", "open"];
-    var numPairsInt: number;
-    var numPlayerInt: number;
-    var numCardsOpen: number = 0;
-    var numCardsFound: number = 0;
+    let cardContent: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     let newArray: string[] = [];
+    let cardOpen: string[] = []
+    let numPairs: number;
+    let numPlayer: number;
+    let numCardsOpen: number = 0;
+    let openArray: any[] = []
+    let cardsTaken: any = [];
+    let x: number = 0;
 
-    let inputs: NodeListOf<HTMLElement> = document.getElementsByTagName("input");
+    let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
+
+
+
 
     document.addEventListener('DOMContentLoaded', init);
-    /*
-        //Hauptfunktion
-        function main(): void {
-            //player();
-            createCardList(numPairsInt);
-            //enterName(numPlayerInt);
-            createsm   }*/
-    
-    
-    //Menüfunktion
-    function init(_event: Event): void {
-        let startButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("start");
+
+
+
+    function init(): void {
+        let startButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("startButton");
         startButton.addEventListener("click", main);
-        
-       
-        document.getElementById("addplayer").addEventListener("click", addPlayer);  
-        document.getElementById("removeplayer").addEventListener("click", removePlayer);
+
     }
-    
 
-    //Eingabe ausführen
+    //Mainfunktion Memory  
     function main(): void {
-        console.log("1");
         let header: NodeListOf<HTMLElement> = document.getElementsByTagName("header");
-        header[0].classList.add("disappearedHeader");
+        header[0].classList.add("hiddenHeader")
 
-        let amountCards: number = parseInt(inputs[2].value);
+        let players: number = parseInt(inputs[0].value);
+        let amountCards: number = parseInt(inputs[5].value);
 
-        if (amountCards > 0 && amountCards <= deck[0].content.length) {
-            createCardList(numPairsInt);
-            createCards(numPairsInt);
+        if (players <= 4 && players > 0 && amountCards > 0 && amountCards <= 10) {
+            //player();
+            createCardList();
+
+            createPlayers();
+
+            createCards();
         }
+
         else {
-            alert("Falsche Eingabe");
+            alert("Undefined!");
             location.reload(true);
         }
     }
 
-    
-    // Spieler hinzufügen
-    function addPlayer(): void {
-        if (numPlayers < 4) {
-            let player: HTMLElement = document.createElement("input");
-            player.setAttribute("type", "text");
-            player.setAttribute("placeholder", "Spielernamen");
-            player.setAttribute("name", "player");
-            player.setAttribute("maxlength", "20");
-            player.setAttribute("id", "name");
-            document.getElementById("name").appendChild(player);
-            numPlayers++;
-        }
-    }
 
-    
-    // Spieler entfernen
-    function removePlayer(): void {
-        document.getElementById("player").remove();
-        numPlayers--;
-    }
-    
-    
-    //Spieleranzahl
-    /*function player(): number {
-        var numPlayer: string = prompt("Gewünschte Anzahl der Spieler   min. 1 | max. 4", "");
-        numPlayerInt = parseInt(numPlayer);
-
-        if (numPlayerInt >= 1 && numPlayerInt <= 4) {
-            return numPlayerInt;
-        }
-        else {
-            alert("Deine Zahl liegt nicht zwischen 1 und 4");
-            player();
-        }
-    }*/
-
-
-    //Kartenpaare
-    /*function pair(): number {
-        var numPairsEnter: string = prompt("Gewünschte Anzahl der Kartenpaare   min. 1 | max. 26");
-        numPairsInt = parseInt(numPairsEnter);
-
-        if (numPairsInt >= 1 && numPairsInt <= 26) {
-            return numPairsInt;
-        }
-        else {
-            alert("Deine Zahl liegt nicht zwischen 1 und 26");
-            pair();
-        }
-    }
-    let amount: number = pair();
-*/
-
-    /*
-    //Spielernamen erstellen
-    function enterName(_numPlayer: number): void {
+    //Spielernamen erzeugen
+    function createPlayers(): void {
         let players: number = parseInt(inputs[0].value);
-        
-        let node: any = document.getElementById("spielernamen");
+
+
+        let node: any = document.getElementById("playersnames");
         let childNodeHTML: string;
 
-        for (let i: number = 0; i < _numPlayer; i++) {
-            let playerName: string = inputs[i+1].value;
+        for (let i: number = 0; i < players; i++) {
+            let playerName: string = inputs[i + 1].value
 
-            childNodeHTML = "<form class='namen'>";
-            childNodeHTML += "<label for='vname'=Name:>";
-            childNodeHTML += "<input type='text' id='vname' name='vname'>";
-            childNodeHTML += "<button class='button' type='button'>Enter</button>";
-            childNodeHTML += "</label>";
-            childNodeHTML += "</form>";
+            childNodeHTML = "<div>";
+            childNodeHTML += "<p class='namen'>";
+            childNodeHTML += playerName;
+            childNodeHTML += "</p>";
+            childNodeHTML += "<p  id='Punktestand" + i + "'>";
+            childNodeHTML += "0";
+            childNodeHTML += "</p>";
+            childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
-        }
-    }*/
-
-
-    //Inhalt erstellen
-    function createCardList(x: number): void {
-        let amountCards: number = parseInt(inputs[2].value);
-        
-        let select: HTMLSelectElement = <HTMLSelectElement>document.getElementById("cardContent");
-        let chosenCardContent: string = select.value;
-        
-        for (let i: number = 1; i <= amountCards; i++) {
-            var content: string = deck[chosenCardContent].content[i-1];
-            
-            cardPush.push(content);
-            cardPush.push(content);
-
-            var remove = cardContent.splice(0, 1);
         }
     }
 
 
-    //Karten erstellen
-    function createCards(_numPairs: number): void {
-        
-        let amountCards: number = parseInt(inputs[2].value);
-        
+    //Karteninhalt erstellen   
+    function createCardList(): void {
+        let amountCards: number = parseInt(inputs[5].value);
+
+        let select: HTMLSelectElement = <HTMLSelectElement>document.getElementById("cardContent");
+        let chosenCardContent: string = select.value;
+
+
+        for (let i: number = 1; i <= amountCards; i++) {
+            let content: string = decks[chosenCardContent].cardContent[i - 1];
+
+            newArray.push(content);
+            newArray.push(content);
+
+            cardContent.splice(0, 1);
+
+            console.log(newArray)
+        }
+    }
+
+
+
+    //Karten erstellen   
+    function createCards(): void {
+
+        let amountCards: number = parseInt(inputs[5].value);
+
         let node: any = document.getElementById("spielfeld");
         let childNodeHTML: string;
 
+
+
         for (let i: number = 0; i < amountCards * 2; i++) {
-            let min: number = 0;
-            let max: number = (cardPush.length * 2);
 
-            var random: number = Math.floor(Math.random() * cardPush.length);
+            var random: number = Math.floor(Math.random() * Math.floor(newArray.length));
 
-            childNodeHTML = "<div  class='hidden" + "' id='Karte" + i + "'>";
+            childNodeHTML = "<div  class='card" + "hidden" + "' id='Karte" + i + "'>";
             childNodeHTML += "<h3>";
-            childNodeHTML += cardPush[random];
+            childNodeHTML += newArray[random];
             childNodeHTML += "</h3>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
 
-            var remove = cardPush.splice(random, 1);
-            var hiddenCards = document.getElementsByClassName("hidden");
+            newArray.splice(random, 1);
 
-            for (let i: number = 0; i < hiddenCards.length; i++) {
-                hiddenCards[i].addEventListener("click", cardStatus);
+            var status = document.getElementsByClassName("cardhidden");
+            for (let i: number = 0; i < status.length; i++) {
 
+
+                status[i].addEventListener("click", changeStatus);
             }
+
         }
+
+
     }
 
-    
-    //Karten klick
-    function cardStatus(_event: MouseEvent): void {
+    // Karten aufdecken
+    function changeStatus(_event: MouseEvent): void {
         let target: HTMLElement = <HTMLElement>_event.currentTarget;
-        if (numCardsOpen >= 0 && numCardsOpen < 2) {
-            if (target.className == "hidden") {
-                target.classList.remove("hidden");
-                target.classList.add("open");
-                numCardsOpen++;
+
+
+        if (target.classList.contains("cardhidden")) {
+
+            target.classList.remove("cardhidden");
+            target.classList.add("cardopen");
+            numCardsOpen++;
+
+            if (numCardsOpen == 2) {
+                setTimeout(compareCards, 1500);
             }
-        }
 
-        if (numCardsOpen == 2) {
-            setTimeout(compareCard, 2000)
-        }
+            if (numCardsOpen > 2) {
+                target.classList.remove("cardopen");
+                target.classList.add("cardhidden");
+            }
 
-        if (numCardsOpen > 2) {
-            target.classList.remove("open");
-            target.classList.add("hidden");
+
         }
     }
 
 
-    //Karten vergleichen
-    function compareCard(): void {
-        let card0 = document.getElementsByClassName("open")[0];
-        let card1 = document.getElementsByClassName("open")[1];
-        cardOpen.push(card0, card1);
-        if (cardOpen[0].innerHTML == cardOpen[1].innerHTML) {
-            card0.classList.remove("open");
-            card0.classList.add("taken");
-            card1.classList.remove("open");
-            card1.classList.add("taken");
-            numCardsFound++;
-            console.log("Pärchen gefunden");
+    // Karten vergleichen
+    function compareCards(): void {
+        let amountCards: number = parseInt(inputs[5].value);
+        let karte1: HTMLDivElement = <HTMLDivElement>document.getElementsByClassName("cardopen")[0];
+        let karte2: HTMLDivElement = <HTMLDivElement>document.getElementsByClassName("cardopen")[1];
 
-            finish();
 
+
+        openArray.push(karte1, karte2);
+        console.log(openArray);
+        if (openArray[0].innerHTML == openArray[1].innerHTML) {
+            openArray[0].classList.remove("cardopen");
+            openArray[1].classList.remove("cardopen");
+            openArray[0].classList.add("cardtaken");
+            openArray[1].classList.add("cardtaken");
+
+            console.log("Kartenpaar abeglegt");
+            x++;
+
+            let playerScore: string = x.toString();
+            document.getElementById('Punktestand0').innerHTML = playerScore;
+
+            // Gratulation
+            if (x == amountCards) {
+                alert("Congratulations!");
+                location.reload(true);
+            }
+
+
+            // Sonst wieder verstecken
         } else {
-            card0.classList.remove("open");
-            card0.classList.add("hidden");
-            card1.classList.remove("open");
-            card1.classList.add("hidden");
-            console.log("leider nicht passend");
+            openArray[0].classList.remove("cardopen");
+            openArray[1].classList.remove("cardopen");
+            openArray[0].classList.add("cardhidden");
+            openArray[1].classList.add("cardhidden");
+
         }
-        cardOpen.splice(0, 2);
+
         numCardsOpen = 0;
+        openArray.splice(0, 2);
 
-        console.log(numCardsFound, numPairsInt);
     }
-
-
-    //Spiel zuende - Glückwunsch
-    function finish(): void {
-        if (numCardsFound == numPairsInt) {
-            prompt("Glückwunsch: Alle Pärchen gefunden!");
-        }
-    }
-
-
 
 }
