@@ -40,6 +40,7 @@ header {
 
 .cardhidden h3 {
 	color: #dfce5c;
+	visibility: hidden;
 }
 
 .cardtaken {

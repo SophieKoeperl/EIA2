@@ -1,17 +1,17 @@
 var Memory;
 (function (Memory) {
     Memory.decks = {};
-    Memory.decks["Letters"] = {
+    Memory.decks["Buchstaben"] = {
         cardContent: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
-        cssClass: "letter"
+        cssClass: "buchstaben"
     };
-    Memory.decks["Animals"] = {
-        cardContent: ["Krokdil", "Pferd", "Guerteltier", "Zebra", "Schnecke", "Frosch", "Forelle", "Tiger", "Maus"],
-        cssClass: "animals"
+    Memory.decks["Namen"] = {
+        cardContent: ["Amelie", "Bruno", "Camilla", "Dörte", "Emil", "Frank", "Gerlinde", "Hannes", "Ingo", "Janika", "Kerstin"],
+        cssClass: "namen"
     };
-    Memory.decks["Cities"] = {
-        cardContent: ["Berlin", "Hamburg", "New York", "Tokyo", "Oslo", "Rom", "Paris", "Wien", "Moskau", "Amsterdam", "Seoul"],
-        cssClass: "cities"
+    Memory.decks["Länder"] = {
+        cardContent: ["Argentinien", "Belgien", "Columbien", "Deutschland", "Equador", "Finnland", "Ghana", "Holland", "Indien"],
+        cssClass: "länder"
     };
     Memory.players = {};
 })(Memory || (Memory = {}));

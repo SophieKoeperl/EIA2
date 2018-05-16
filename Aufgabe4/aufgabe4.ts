@@ -30,7 +30,7 @@ namespace Memory {
 
     }
 
-    //Mainfunktion Memory  
+    //Mainfunktion 
     function main(): void {
         let header: NodeListOf<HTMLElement> = document.getElementsByTagName("header");
         header[0].classList.add("hiddenHeader")
@@ -189,7 +189,7 @@ namespace Memory {
             }
 
 
-            // Sonst wieder verstecken
+            // Pärchen falsch
         } else {
             openArray[0].classList.remove("cardopen");
             openArray[1].classList.remove("cardopen");

@@ -18,7 +18,7 @@ var Memory;
         let startButton = document.getElementById("startButton");
         startButton.addEventListener("click", main);
     }
-    //Mainfunktion Memory  
+    //Mainfunktion 
     function main() {
         let header = document.getElementsByTagName("header");
         header[0].classList.add("hiddenHeader");

@@ -11,19 +11,19 @@ namespace Memory {
 
     export let decks: Decks = {}
 
-    decks["Letters"] = {
+    decks["Buchstaben"] = {
         cardContent: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
-        cssClass: "letter"
+        cssClass: "buchstaben"
     };
 
-    decks["Animals"] = {
-        cardContent: ["Krokdil", "Pferd", "Guerteltier", "Zebra", "Schnecke", "Frosch", "Forelle", "Tiger", "Maus"],
-        cssClass: "animals"
+    decks["Namen"] = {
+        cardContent: ["Amelie", "Bruno", "Camilla", "Dörte", "Emil", "Frank", "Gerlinde", "Hannes", "Ingo", "Janika", "Kerstin"],
+        cssClass: "namen"
     };
 
-    decks["Cities"] = {
-        cardContent: ["Berlin", "Hamburg", "New York", "Tokyo", "Oslo", "Rom", "Paris", "Wien", "Moskau", "Amsterdam", "Seoul"],
-        cssClass: "cities"
+    decks["Länder"] = {
+        cardContent: ["Argentinien", "Belgien", "Columbien", "Deutschland", "Equador", "Finnland", "Ghana", "Holland", "Indien"],
+        cssClass: "länder"
     };
 
 
