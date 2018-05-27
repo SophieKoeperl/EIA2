@@ -1,3 +1,6 @@
+/* Aufgabe: 6 - StudiVZ Name: Sophie Köperl Matrikel:257762 Datum: 27.05.2018
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde
+nicht kopiert und auch nicht diktiert. */
 var Aufgabe6;
 (function (Aufgabe6) {
     window.addEventListener("load", main);

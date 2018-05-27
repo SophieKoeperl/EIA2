@@ -1,3 +1,7 @@
+/* Aufgabe: 6 - StudiVZ Name: Sophie Köperl Matrikel:257762 Datum: 27.05.2018 
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde
+nicht kopiert und auch nicht diktiert. */
+
 namespace Aufgabe6{
     window.addEventListener("load", main);
     let address: string = "https://app-sophie.herokuapp.com";
