@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Aufgabe 6: StudtiVZ</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="DatabaseClient.css" type="text/css" media="screen"/>
+<script src="aufgabe6.js" type="text/javascript" charset="utf-8"></script>
+<script src="interface.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<form action="https://app-sophie.herokuapp.com" method="get"></form>
+	<fieldset id="input">
+		<legend> Registrierung </legend>
+		<input type="text" name="firstname" placeholder="Vorname"/>
+		<input type="text" name="name" placeholder="Name"/>
+		<input type="text" name="matrikel" placeholder="Matrikelnummer" pattern="[0-9]{6}"/>
+		<input type="number" name="age" placeholder="Alter" min="1" max="100"/>
+		<input type="radio" name="gender" value="male" checked="checked" id="male"/>
+		<label for="male">Männlich</label>
+		<input type="radio" name="gender" value="female" id="female"/>
+		<label for="female">Weiblich</label>
+		<select name="Select" id="select">
+			<option value="MKB" selected="">MKB</option>
+			<option value="MIB">MIB</option>
+			<option value="OMB">OMB</option>
+		</select>
+		<button type="button" id="speichern">Speichern</button>
+	</fieldset>
+	<fieldset id="output1">
+		<legend> Datenbase Studenten </legend>
+		<button type="button" id="refresh">Ausgeben</button>
+		<textarea rows="10" cols="60"> </textarea>
+	</fieldset>
+	<fieldset id="output2">
+		<legend> Spezifische Suche </legend>
+		<input type="text" name="name" placeholder="Eingabe Matrikelnummer"/>
+		<button type="button" id="suchen">Suchen</button>
+		<textarea rows="10" cols="60"> </textarea>
+	</fieldset>
+</body>
+</html>
