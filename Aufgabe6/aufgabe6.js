@@ -4,7 +4,7 @@ nicht kopiert und auch nicht diktiert. */
 var Aufgabe6;
 (function (Aufgabe6) {
     window.addEventListener("load", main);
-    let address = "https://app-sophie.herokuapp.com";
+    let address = "https://app-sophie.herokuapp.com/";
     let inputs = document.getElementsByTagName("input");
     function main(_event) {
         let ButtonSpeichern = document.getElementById("speichern");

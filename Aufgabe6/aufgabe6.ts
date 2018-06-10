@@ -4,7 +4,7 @@ nicht kopiert und auch nicht diktiert. */
 
 namespace Aufgabe6{
     window.addEventListener("load", main);
-    let address: string = "https://app-sophie.herokuapp.com";
+    let address: string = "https://app-sophie.herokuapp.com/";
 
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
