@@ -1,25 +1,23 @@
-/* Aufgabe: 8-Database - StudiVZ Name: Sophie Köperl Matrikel:257762 Datum: 10.06.2018
+/* Aufgabe: 8-Database - StudiVZ Name: Sophie Köperl Matrikel:257762 Datum: 13.06.2018
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. */
 var Aufgabe8;
 (function (Aufgabe8) {
-    window.addEventListener("load", main);
+    window.addEventListener("load", init);
     let address = "https://app-sophie.herokuapp.com/";
     let inputs = document.getElementsByTagName("input");
-    function main(_event) {
-        let ButtonSpeichern = document.getElementById("speichern");
-        let ButtonRefresh = document.getElementById("refresh");
-        let ButtonSuchen = document.getElementById("suchen");
-        ButtonSpeichern.addEventListener("click", speichern);
-        ButtonRefresh.addEventListener("click", refresh);
-        ButtonSuchen.addEventListener("click", suchen);
+    function init(_event) {
+        console.log("Init");
+        let insertButton = document.getElementById("insert");
+        let refreshButton = document.getElementById("refresh");
+        let searchButton = document.getElementById("checkSearch");
+        insertButton.addEventListener("click", insert);
+        refreshButton.addEventListener("click", refresh);
+        searchButton.addEventListener("click", search);
     }
-    //Eingabe speichern
-    function speichern(_event) {
-        let inputs = document.getElementsByTagName("input");
+    function insert(_event) {
         let genderButton = document.getElementById("male");
         let matrikel = inputs[2].value;
-        let courseSelect = document.getElementById("select");
         let studi;
         studi = {
             name: inputs[0].value,
@@ -27,7 +25,7 @@ var Aufgabe8;
             matrikel: parseInt(matrikel),
             age: parseInt(inputs[3].value),
             gender: genderButton.checked,
-            course: courseSelect.value
+            studiengang: document.getElementsByTagName("select").item(0).value
         };
         let convert = JSON.stringify(studi);
         console.log(convert);
@@ -56,7 +54,7 @@ var Aufgabe8;
             output.value += xhr.response;
         }
     }
-    function suchen(_event) {
+    function search(_event) {
         let mtrkl = inputs[6].value;
         let xhr = new XMLHttpRequest();
         xhr.open("GET", address + "?command=search&searchFor=" + mtrkl, true);
@@ -69,8 +67,6 @@ var Aufgabe8;
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             output.value += xhr.response;
-            let responseAsJson = JSON.parse(xhr.response);
-            console.log(responseAsJson);
         }
     }
 })(Aufgabe8 || (Aufgabe8 = {}));

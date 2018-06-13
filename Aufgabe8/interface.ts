@@ -6,7 +6,7 @@ namespace Aufgabe8{
         matrikel: number;
         age: number;
         gender: boolean;
-        course: string;
+        studiengang: string;
     }
 
      // homogen assoziativ: Datensatz wird Matrikelnummer zugeordnet

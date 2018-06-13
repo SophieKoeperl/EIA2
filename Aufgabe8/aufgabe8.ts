@@ -1,28 +1,27 @@
-/* Aufgabe: 8-Database - StudiVZ Name: Sophie Köperl Matrikel:257762 Datum: 10.06.2018 
+/* Aufgabe: 8-Database - StudiVZ Name: Sophie Köperl Matrikel:257762 Datum: 13.06.2018 
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. */
 
 namespace Aufgabe8{
-    window.addEventListener("load", main);
+    window.addEventListener("load", init);
     let address: string = "https://app-sophie.herokuapp.com/";
 
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
-     function main(_event: Event): void {
-        let ButtonSpeichern: HTMLButtonElement = <HTMLButtonElement>document.getElementById("speichern");
-        let ButtonRefresh: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
-        let ButtonSuchen: HTMLButtonElement = <HTMLButtonElement>document.getElementById("suchen");
-        ButtonSpeichern.addEventListener("click", speichern);
-        ButtonRefresh.addEventListener("click", refresh);
-        ButtonSuchen.addEventListener("click", suchen);
+
+    function init(_event: Event): void {
+        console.log("Init");
+        let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
+        let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+        let searchButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("checkSearch");
+        insertButton.addEventListener("click", insert);
+        refreshButton.addEventListener("click", refresh);
+        searchButton.addEventListener("click", search);
     }
 
-    //Eingabe speichern
-    function speichern(_event: Event): void {
-        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
+    function insert(_event: Event): void {
         let genderButton: HTMLInputElement = <HTMLInputElement>document.getElementById("male");
         let matrikel: string = inputs[2].value;
-        let courseSelect: HTMLSelectElement = <HTMLSelectElement>document.getElementById("select");
         let studi: Studi;
         studi = {
             name: inputs[0].value,
@@ -30,9 +29,8 @@ namespace Aufgabe8{
             matrikel: parseInt(matrikel),
             age: parseInt(inputs[3].value),
             gender: genderButton.checked,
-            course: courseSelect.value
+            studiengang: document.getElementsByTagName("select").item(0).value
         };
-        
         let convert: string = JSON.stringify(studi);
         console.log(convert);
 
@@ -66,7 +64,7 @@ namespace Aufgabe8{
         }           
     }
     
-    function suchen(_event: Event): void {
+    function search(_event: Event): void {
         let mtrkl: string = inputs[6].value;
         
         let xhr: XMLHttpRequest = new XMLHttpRequest();
@@ -81,9 +79,9 @@ namespace Aufgabe8{
         var xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
             output.value += xhr.response;
-            let responseAsJson: JSON = JSON.parse(xhr.response);
-            console.log(responseAsJson);
         }           
     }
     
+            
+
 }
