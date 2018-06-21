@@ -18,37 +18,37 @@ var Aufgabe9;
         //Draw seagrass
         for (let i = 0; i < 7; i++) {
             seagrass(Math.floor(Math.random() * width), height - 75, Math.floor(Math.random() * 100 + 100));
-            // Draw Starfish
-            starfish(360, 570);
-            starfish(115, 600);
-            // Draw Rocks
-            rocks(-30, 550);
-            rocks(250, 600);
-            // Draw Chest
-            chest(130, 600);
-            //Blubberblasen groß
-            for (let i = 0; i < 2; i++) {
-                let x = Math.random() * crc2.canvas.width;
-                let y = Math.random() * 260;
-                drawBubbleBig(x, y, 2);
-            }
-            // Draw Fishes   
-            for (let i = 0; i < 3; i++) {
-                let x = Math.random() * crc2.canvas.width;
-                let y = Math.random() * 500;
-                let r = Math.random() * 250;
-                let g = Math.random() * 250;
-                let b = Math.random() * 250;
-                fish(x, y, r, g, b);
-            }
-            for (let i = 0; i < 6; i++) {
-                let x = Math.random() * crc2.canvas.width;
-                let y = Math.random() * 500;
-                let r = Math.random() * 250;
-                let g = Math.random() * 250;
-                let b = Math.random() * 250;
-                fishes(x, y, r, g, b);
-            }
+        }
+        // Draw Starfish
+        starfish(360, 570);
+        starfish(115, 600);
+        // Draw Rocks
+        rocks(-30, 550);
+        rocks(250, 600);
+        // Draw Chest
+        chest(130, 600);
+        //Blubberblasen groß
+        for (let i = 0; i < 2; i++) {
+            let x = Math.random() * crc2.canvas.width;
+            let y = Math.random() * 260;
+            drawBubbleBig(x, y, 2);
+        }
+        // Draw Fishes   
+        for (let i = 0; i < 3; i++) {
+            let x = Math.random() * crc2.canvas.width;
+            let y = Math.random() * 500;
+            let r = Math.random() * 250;
+            let g = Math.random() * 250;
+            let b = Math.random() * 250;
+            fish(x, y, r, g, b);
+        }
+        for (let i = 0; i < 6; i++) {
+            let x = Math.random() * crc2.canvas.width;
+            let y = Math.random() * 500;
+            let r = Math.random() * 250;
+            let g = Math.random() * 250;
+            let b = Math.random() * 250;
+            fishes(x, y, r, g, b);
         }
     }
     // Draw Ozean
