@@ -20,14 +20,14 @@ namespace Aufgabe10 {
         // Draw Ozean
         ozean(50);
         // Draw Ground
-        ground(height - 100);
+        ground();
         // Draw Rocks
         rocks(-30, 550);
         rocks(250, 600);
         // Draw Chest
         chest(130, 600);
         // Draw Starfish
-        starfish(360, 570);
+        starfish(360, 520);
         starfish(115, 600);
         //Draw seagrass
         for (let i = 0; i < 7; i++) {
@@ -36,18 +36,20 @@ namespace Aufgabe10 {
 
         imagedata = crc2.getImageData(0, 0, 640, 360);
 
+        // Draw Chest
+        chest(130, 600);
 
         // Animation
         for (let i: number = 0; i < n; i++) {
             let fish: Fish = new Fish();
             fish.x = Math.random() * crc2.canvas.width;
-            fish.y = Math.random() * 250;
+            fish.y = Math.random() * 350;
             fishes.push(fish);
         }
 
         for (let i: number = 0; i < n - 2; i++) {
             let bubble: Bubbles = new Bubbles();
-            bubble.x = Math.random() * (500 - 450) + 350;
+            bubble.x = Math.random() * (300 - 150) + 150;
             bubble.y = Math.random() * 180;
             bubble.r = Math.random() * 10;
             bubbles.push(bubble);
@@ -56,7 +58,7 @@ namespace Aufgabe10 {
         for (let i: number = 0; i < k; i++) {
             let bigfish: Bigfish = new Bigfish();
             bigfish.x = Math.random() * crc2.canvas.width;
-            bigfish.y = Math.random() * 250;
+            bigfish.y = Math.random() * 350;
             bigfishes.push(bigfish);
         }
 
@@ -111,14 +113,14 @@ namespace Aufgabe10 {
     }
 
     //ground
-    function ground(_y: number): void {
+    function ground(): void {
         crc2.beginPath();
-        crc2.moveTo(0, 560);
-        crc2.lineTo(0, 225);
+        crc2.moveTo(0, 860);
+        crc2.lineTo(0, 525);
         for (let i: number = 0; i < width; i++) {
-            crc2.lineTo(i, 15 * Math.sin(i * .015) + _y);
+            crc2.lineTo(i, 15 * Math.sin(i * .015) + 200);
         }
-        crc2.lineTo(640, 360);
+        crc2.lineTo(1080, 360);
         crc2.lineTo(0, height);
         crc2.fillStyle = "rgb(255, 250, 205)";
         crc2.fill();

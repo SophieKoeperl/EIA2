@@ -17,30 +17,32 @@ var Aufgabe10;
         // Draw Ozean
         ozean(50);
         // Draw Ground
-        ground(height - 100);
+        ground();
         // Draw Rocks
         rocks(-30, 550);
         rocks(250, 600);
         // Draw Chest
         chest(130, 600);
         // Draw Starfish
-        starfish(360, 570);
+        starfish(360, 520);
         starfish(115, 600);
         //Draw seagrass
         for (let i = 0; i < 7; i++) {
             seagrass(Math.floor(Math.random() * width), height - 75, Math.floor(Math.random() * 100 + 100));
         }
         imagedata = Aufgabe10.crc2.getImageData(0, 0, 640, 360);
+        // Draw Chest
+        chest(130, 600);
         // Animation
         for (let i = 0; i < n; i++) {
             let fish = new Aufgabe10.Fish();
             fish.x = Math.random() * Aufgabe10.crc2.canvas.width;
-            fish.y = Math.random() * 250;
+            fish.y = Math.random() * 350;
             fishes.push(fish);
         }
         for (let i = 0; i < n - 2; i++) {
             let bubble = new Aufgabe10.Bubbles();
-            bubble.x = Math.random() * (500 - 450) + 350;
+            bubble.x = Math.random() * (300 - 150) + 150;
             bubble.y = Math.random() * 180;
             bubble.r = Math.random() * 10;
             bubbles.push(bubble);
@@ -48,7 +50,7 @@ var Aufgabe10;
         for (let i = 0; i < k; i++) {
             let bigfish = new Aufgabe10.Bigfish();
             bigfish.x = Math.random() * Aufgabe10.crc2.canvas.width;
-            bigfish.y = Math.random() * 250;
+            bigfish.y = Math.random() * 350;
             bigfishes.push(bigfish);
         }
         animate();
@@ -91,14 +93,14 @@ var Aufgabe10;
             bigfishes[i].draw();
     }
     //ground
-    function ground(_y) {
+    function ground() {
         Aufgabe10.crc2.beginPath();
-        Aufgabe10.crc2.moveTo(0, 560);
-        Aufgabe10.crc2.lineTo(0, 225);
+        Aufgabe10.crc2.moveTo(0, 860);
+        Aufgabe10.crc2.lineTo(0, 525);
         for (let i = 0; i < width; i++) {
-            Aufgabe10.crc2.lineTo(i, 15 * Math.sin(i * .015) + _y);
+            Aufgabe10.crc2.lineTo(i, 15 * Math.sin(i * .015) + 200);
         }
-        Aufgabe10.crc2.lineTo(640, 360);
+        Aufgabe10.crc2.lineTo(1080, 360);
         Aufgabe10.crc2.lineTo(0, height);
         Aufgabe10.crc2.fillStyle = "rgb(255, 250, 205)";
         Aufgabe10.crc2.fill();
