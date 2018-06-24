@@ -83,7 +83,7 @@ var Aufgabe9;
         crc2.bezierCurveTo(_x - 20, _y - 30, _x, _y + 10, _x - 15, _y - _h);
         crc2.stroke();
     }
-    // Draw Seagrass
+    // Draw Starfish
     function starfish(_x, _y) {
         crc2.beginPath();
         crc2.fillStyle = "rgb(105,89,205)";

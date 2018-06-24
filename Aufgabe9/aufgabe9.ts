@@ -93,7 +93,7 @@ function seagrass(_x: number, _y: number, _h: number): void {
 
 }
 
-// Draw Seagrass
+// Draw Starfish
 function starfish(_x: number, _y: number): void {
     crc2.beginPath();
     crc2.fillStyle = "rgb(105,89,205)";
