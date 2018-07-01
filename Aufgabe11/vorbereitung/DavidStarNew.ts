@@ -1,6 +1,6 @@
 namespace Vorbereitung {
     
-    export class DavidStarGreen extends DavidStar {
+    export class DavidStarNew extends DavidStar {
 
         constructor(_color: string) {
             super(_color);

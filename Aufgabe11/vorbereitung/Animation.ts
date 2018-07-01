@@ -45,7 +45,7 @@ namespace Vorbereitung {
                 break;
 
             case 2:
-                let blueDavidStar: DavidStarGreen = new DavidStarGreen("#1adbce");
+                let blueDavidStar: DavidStarNew = new DavidStarNew("#1adbce");
                 blueDavidStar.x = newPositionX;
                 blueDavidStar.y = newPositonY;
                 stars.push(blueDavidStar);

@@ -35,7 +35,7 @@ var Vorbereitung;
                 stars.push(rect);
                 break;
             case 2:
-                let blueDavidStar = new Vorbereitung.DavidStarGreen("#1adbce");
+                let blueDavidStar = new Vorbereitung.DavidStarNew("#1adbce");
                 blueDavidStar.x = newPositionX;
                 blueDavidStar.y = newPositonY;
                 stars.push(blueDavidStar);

@@ -1,6 +1,6 @@
 var Vorbereitung;
 (function (Vorbereitung) {
-    class DavidStarGreen extends Vorbereitung.DavidStar {
+    class DavidStarNew extends Vorbereitung.DavidStar {
         constructor(_color) {
             super(_color);
         }
@@ -9,6 +9,6 @@ var Vorbereitung;
             this.y -= 1;
         }
     }
-    Vorbereitung.DavidStarGreen = DavidStarGreen;
+    Vorbereitung.DavidStarNew = DavidStarNew;
 })(Vorbereitung || (Vorbereitung = {}));
-//# sourceMappingURL=DavidStarGreen.js.map
+//# sourceMappingURL=DavidStarNew.js.map
